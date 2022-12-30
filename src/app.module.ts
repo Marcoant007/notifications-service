@@ -1,13 +1,11 @@
-import { PrismaService } from './infra/prisma.service';
+import { DatabaseModule } from './infra/database/database.module';
+import { HttpModule } from './infra/routes/http.module';
+import { PrismaService } from './infra/database/prisma/prisma.service';
 import { Module } from '@nestjs/common';
-import { AppController } from './infra/app.controller';
+import { NotificationsController } from './infra/routes/controllers/notifications.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [
-    PrismaService,
-  ],
+  imports: [HttpModule, DatabaseModule],
 })
 export class AppModule {}
